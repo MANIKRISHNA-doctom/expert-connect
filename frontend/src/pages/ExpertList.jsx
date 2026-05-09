@@ -18,8 +18,11 @@ function ExpertList() {
 
   return (
     <div>
+      <div>
+        <Link to = {'/my-bookings'}>My Bookings</Link>
+      </div>
       <h2>Experts</h2>
-
+      
       <input
         placeholder="Search..."
         onChange={(e) => setSearch(e.target.value)}

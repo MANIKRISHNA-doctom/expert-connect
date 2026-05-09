@@ -7,7 +7,7 @@ function MyBookings() {
 
   const fetchBookings = async () => {
     const res = await API.get(`/bookings?email=${email}`);
-    setBookings(res.data);
+    setBookings(res.data.bookings);
   };
 
   return (
