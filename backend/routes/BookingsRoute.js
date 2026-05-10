@@ -53,7 +53,7 @@ BookingRouter.get("/", async (req, res) => {
       });
     }
 
-    const bookings = await Booking.find({ email }).populate("expertId");
+    const bookings = await Booking.find({email});
 
     res.json(bookings);
   } catch (err) {

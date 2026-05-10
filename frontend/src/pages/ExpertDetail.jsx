@@ -11,7 +11,7 @@ function ExpertDetail() {
 
   const fetchExpert = async () => {
     const res = await API.get(`/experts/${id}`);
-    setExpert(res.data.expert);
+    setExpert(res.data);
   };
 
   const fetchSlots = async () => {
