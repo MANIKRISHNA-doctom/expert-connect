@@ -14,13 +14,13 @@ function MyBookings() {
   return (
     <div>
       <div>
-        <Link to = {'/'}>Home</Link>
+        <Link to = {'/'} className="text-3xl">Home</Link>
       </div>
       <input
         placeholder="Enter email"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button onClick={fetchBookings}>Get Bookings</button>
+      <button onClick={fetchBookings} className="text-3xl">Get Bookings</button>
 
       {bookings.map((b) => (
         <div key={b._id}>
