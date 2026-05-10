@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../api/api";
 import { Link } from "react-router-dom";
+import "../CSS/ExpertList.css";
 
 function ExpertList() {
   const [experts, setExperts] = useState([]);
@@ -9,7 +10,6 @@ function ExpertList() {
   const fetchExperts = async () => {
     const res = await API.get(`/experts?search=${search}`);
     setExperts(res.data.experts);
-    console.log(experts);
   };
 
   useEffect(() => {
@@ -17,25 +17,29 @@ function ExpertList() {
   }, [search]);
 
   return (
-    <div>
-      <div>
-        <Link to = {'/my-bookings'}>My Bookings</Link>
+    <div className="expert-list-page">
+      <div className="nav-bar">
+        <Link to="/my-bookings">My Bookings</Link>
       </div>
-      <h2>Experts</h2>
-      
+
+      <h2 className="page-title">Experts</h2>
+
       <input
+        className="search-input"
         placeholder="Search..."
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {experts.map((exp) => (
-        <div key={exp._id}>
-          <h3>{exp.name}</h3>
-          <p>{exp.category}</p>
-          <p>{exp.experience} years</p>
-          <Link to={`/expert/${exp._id}`}>View</Link>
-        </div>
-      ))}
+      <div className="expert-grid">
+        {experts.map((exp) => (
+          <div key={exp._id} className="expert-card">
+            <h3 className="expert-name">{exp.name}</h3>
+            <p className="expert-meta">{exp.category}</p>
+            <p className="expert-meta">{exp.experience} years</p>
+            <Link to={`/expert/${exp._id}`} className="view-link">View</Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
